@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 60316bd46b124d946a1460c7e05f4b1e
+<<<<<<< Updated upstream:Assets/Images/rtan0.png.meta
+guid: fbe0a7d205aa877419658e02e4d890a8
+=======
+guid: c0110d355a83d4443870c511a258284e
+>>>>>>> Stashed changes:Assets/1weeks/rtan0.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +52,11 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream:Assets/Images/rtan0.png.meta
+  spritePixelsToUnits: 500
+=======
   spritePixelsToUnits: 100
+>>>>>>> Stashed changes:Assets/1weeks/rtan0.png.meta
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -94,6 +102,35 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+<<<<<<< Updated upstream:Assets/Images/rtan0.png.meta
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+=======
+>>>>>>> Stashed changes:Assets/1weeks/rtan0.png.meta
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -119,6 +156,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< Updated upstream:Assets/Images/rtan0.png.meta
+=======
   - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
@@ -132,6 +171,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+>>>>>>> Stashed changes:Assets/1weeks/rtan0.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []
