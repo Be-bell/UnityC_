@@ -1,28 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Card : MonoBehaviour
 {
     public int idx = 0;
 
-    public GameObject front;
-    public GameObject back;
-    public Animator anim;
     public SpriteRenderer frontImg;
+    public SpriteRenderer front;
+    public SpriteRenderer back;
+    public Animator anim;
+
+    public Ease ease;
 
     public AudioClip clip;
     public AudioSource audioSource;
 
     private void Start()
     {
+        frontImg.sprite = back.sprite;        
+        frontImg = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
-
     }
     public void Setting(int number)
     {
         idx = number;
-        frontImg.sprite = Resources.Load<Sprite>($"rtan{idx}");
+        front.sprite = Resources.Load<Sprite>($"rtan{idx}");
     }
     public void DestoryCard()
     {
@@ -35,25 +39,24 @@ public class Card : MonoBehaviour
     }
     public void OpenCard()
     {
-        Debug.Log(idx);
+        Rotate();
         audioSource.PlayOneShot(clip);
 
         anim.SetBool("IsOpen", true);
-        front.SetActive(true);
-        back.SetActive(false);
+        //front.SetActive(true);
+        //back.SetActive(false);
 
-       if(GameManager.Instance.firstCard == null)
+        if (GameManager.Instance.firstCard == null)
         {
             GameManager.Instance.firstCard = this;
         }
-       else
+        else
         {
             GameManager.Instance.secondCard = this;
             GameManager.Instance.Matched();
         }
-        
-    }
 
+    }
     public void CloseCard()
     {
         Invoke("CloseCardInvoke", 1.0f);
@@ -61,8 +64,18 @@ public class Card : MonoBehaviour
 
     private void CloseCardInvoke()
     {
+        Rotate();
         anim.SetBool("IsOpen", false);
-        front.SetActive(false);
-        back.SetActive(true);
+        //front.SetActive(false);
+        //back.SetActive(true);
+    }
+
+    public void Rotate()
+    {        
+        var seq = DOTween.Sequence();
+        seq.Append(this.transform.DORotate(this.transform.eulerAngles + new Vector3(0, 90, 0), 0.25f)).SetEase(ease);
+        seq.AppendCallback(() => { frontImg.sprite = (this.transform.eulerAngles.y < 180) ? front.sprite : back.sprite;
+            frontImg.flipX = (this.transform.eulerAngles.y < 180) ? true: false; });
+        seq.Append(this.transform.DORotate(this.transform.eulerAngles + new Vector3(0, 180, 0), 0.25f)).SetEase(ease);
     }
 }
