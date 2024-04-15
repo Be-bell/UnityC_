@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 11038343}
   - component: {fileID: 11038342}
   - component: {fileID: 11038345}
+  - component: {fileID: 11038347}
   - component: {fileID: 11038346}
   m_Layer: 5
   m_Name: EndText
@@ -248,9 +249,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11038346}
-        m_TargetAssemblyTypeName: RewardedButton, Assembly-CSharp
-        m_MethodName: ShowAd
+      - m_Target: {fileID: 11038347}
+        m_TargetAssemblyTypeName: RetryButton, Assembly-CSharp
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -274,6 +275,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _androidAdUnitId: Rewarded_Android
   _iOSAdUnitId: Rewarded_iOS
+--- !u!114 &11038347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11038340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5bfae57cb14b649aec1af58a12a63d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &228416104
 GameObject:
   m_ObjectHideFlags: 0
