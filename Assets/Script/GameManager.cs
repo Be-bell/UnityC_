@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         if(firstCard.idx == secondCard.idx)
         {
+            
             audioSource.PlayOneShot(audioClip);
 
             firstCard.DestoryCard();
