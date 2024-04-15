@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream:Assets/Images/rtan7.png.meta
-guid: 386d0b5ff838732468cab9feac43eb61
-=======
-guid: 8c0154735d2c5df40a64d62d96845f3b
->>>>>>> Stashed changes:Assets/1weeks/rtan7.png.meta
+guid: e0d4ad6a6c3c3c84ebb7897c0dc9891c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -52,11 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream:Assets/Images/rtan7.png.meta
   spritePixelsToUnits: 500
-=======
-  spritePixelsToUnits: 100
->>>>>>> Stashed changes:Assets/1weeks/rtan7.png.meta
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +94,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-<<<<<<< Updated upstream:Assets/Images/rtan7.png.meta
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -129,8 +120,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-=======
->>>>>>> Stashed changes:Assets/1weeks/rtan7.png.meta
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -156,22 +145,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< Updated upstream:Assets/Images/rtan7.png.meta
-=======
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
->>>>>>> Stashed changes:Assets/1weeks/rtan7.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []
