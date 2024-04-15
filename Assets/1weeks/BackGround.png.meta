@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: b8c1611cbe3e0724fbda28cb1c96a8ce
+<<<<<<< Updated upstream:Assets/Images/BackGround.png.meta
+guid: 60316bd46b124d946a1460c7e05f4b1e
+=======
+guid: 33d9cb0053a01f14f9843e17ccb42014
+>>>>>>> Stashed changes:Assets/1weeks/BackGround.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,7 +98,33 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
