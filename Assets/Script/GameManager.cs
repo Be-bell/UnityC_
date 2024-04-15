@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public Text timeText;
     public GameObject endText;
 
-    private float time = 60.0f;
+    private float time = 0.0f;
     public int cardCount = 0;
 
     public int stateNum = 0;
@@ -33,12 +33,12 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        time -= Time.deltaTime;
+        time += Time.deltaTime;
         timeText.text = time.ToString("N2");
 
-        if(time < 0.0f)
+        if(time >= 30.0f)
         {
-            time = 0.0f;
+            time = 30.0f;
 
             endText.SetActive(true);
             Time.timeScale = 0.0f;
@@ -65,7 +65,6 @@ public class GameManager : MonoBehaviour
         {
             firstCard.CloseCard();
             secondCard.CloseCard();
-            time -= 2.0f;
         }
         firstCard = null;
         secondCard = null;
