@@ -56,6 +56,9 @@ public class Card : MonoBehaviour
         {
             GameManager.Instance.secondCard = this;
             GameManager.Instance.Matched();
+
+            // if Matching finished, matchCount++;
+            GameManager.Instance.matchCount++;
         }
 
     }

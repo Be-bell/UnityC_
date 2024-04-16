@@ -15,12 +15,18 @@ public class GameManager : MonoBehaviour
     public Text maxText;
     public GameObject endText;
 
+    // matchTxt caching
+    public Text matchTxt;
+
     private float time = 60.0f; // 제한 시간을 60초로 설정한다. [실패할때마다 시간 감소]
     private float maxTime = 0.0f;
 
     public int cardCount = 0;
 
     public int stateNum = 0;
+
+    // count attemped to match card
+    public int matchCount = 0;
 
     public AudioClip audioClip;
     private AudioSource audioSource;
@@ -45,6 +51,9 @@ public class GameManager : MonoBehaviour
     {
         time -= Time.deltaTime; //제한시간이 점점 감소한다 [실패할때마다 시간 감소]
         timeText.text = time.ToString("N2");
+
+        // matchCount put in matchTxt
+        matchTxt.text = matchCount.ToString();
         
         if (time <= 10.0f) //제한시간이 10초 남았을 시 [타이머 시간 경고 기능]
         {

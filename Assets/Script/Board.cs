@@ -12,9 +12,10 @@ public class Board : MonoBehaviour
     {
 
         int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
-        arr = arr.OrderBy(x => Random.Range(0f,  7f)).ToArray();
+        //orderBy -> Shuffle 
+        shuffle(arr);
 
-        for(int i = 0; i < 16; i ++)
+        for (int i = 0; i < 16; i ++)
         {
             GameObject go = Instantiate(card);
             go.transform.parent = this.transform;
@@ -28,6 +29,19 @@ public class Board : MonoBehaviour
         }
 
         GameManager.Instance.cardCount = arr.Length;
-    }   
+
+    }
+
+    // Shuffle method
+    void shuffle(int[] arr)
+    {
+        for (int i = 0; i < arr.Length; i++)
+        {
+            int temp = arr[i];
+            int randomIndex = Random.Range(0, arr.Length);
+            arr[i] = arr[randomIndex];
+            arr[randomIndex] = temp;
+        }
+    }
 }
   
