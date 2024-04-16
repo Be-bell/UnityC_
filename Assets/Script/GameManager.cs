@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
-        if(firstCard.idx == secondCard.idx)
+        if(firstCard.idx == secondCard.idx +8 || firstCard.idx +8 == secondCard.idx)
         {
             
             audioSource.PlayOneShot(audioClip);
