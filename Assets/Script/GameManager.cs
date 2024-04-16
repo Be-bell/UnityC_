@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public AudioClip audioClip;
     private AudioSource audioSource;
 
+    public GameObject failTxt;
+
     private void Awake()
     {
         if (Instance == null)
@@ -82,6 +84,7 @@ public class GameManager : MonoBehaviour
         {
             firstCard.CloseCard();
             secondCard.CloseCard();
+            failTxt.SetActive(true);
             time -= 2.0f;//카드 매칭이 틀렸을 시 제한시간 2초 차감한다 [실패할때마다 시간 감소]
         }
         firstCard = null;
@@ -91,5 +94,9 @@ public class GameManager : MonoBehaviour
     public void AddStateNum()
     {
         stateNum++;
+    }
+    public void ButtonContenue()
+    {
+        failTxt.SetActive(false);
     }
 }
