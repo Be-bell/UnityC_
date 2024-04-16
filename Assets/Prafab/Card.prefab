@@ -241,6 +241,7 @@ MonoBehaviour:
   back: {fileID: 766235745980269897}
   anim: {fileID: 8334755786262217638}
   frontImg: {fileID: 5801029186573607933}
+  backImg: {fileID: 0}
   clip: {fileID: 8300000, guid: 7e37c302fa868eb44b339f70839d4048, type: 3}
   audioSource: {fileID: 0}
 --- !u!95 &8334755786262217638
@@ -367,7 +368,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5828429525144855132}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
