@@ -1144,7 +1144,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCD5C\uACE0 \uC810\uC218 : "
+  m_Text: "\uCD5C\uB2E8 \uAE30\uB85D : "
 --- !u!222 &1143394883
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1328,6 +1328,8 @@ MonoBehaviour:
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
   timeText: {fileID: 451012532}
+  maxText: {fileID: 5263472}
+  resultText: {fileID: 396371410}
   resultPanel: {fileID: 470735112}
   matchTxt: {fileID: 1490257959}
   cardCount: 0
@@ -1776,6 +1778,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1869394119
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 360037026607770221, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: m_Name
+      value: DataManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111911775263126256, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111911775263126256, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111911775263126256, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111911775263126256, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111911775263126256, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111911775263126256, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111911775263126256, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111911775263126256, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111911775263126256, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111911775263126256, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
 --- !u!1 &1920405814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,7 +1885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.50980395}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1858,6 +1917,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1252851987}
   - {fileID: 1209077282}
+  - {fileID: 1869394119}
   - {fileID: 1329750226}
   - {fileID: 1594541975}
   - {fileID: 228416105}

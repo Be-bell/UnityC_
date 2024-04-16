@@ -77,7 +77,7 @@ public class Card : MonoBehaviour
 
     IEnumerator FlipCard()
     {
-        Debug.Log($"{idx} + 코루틴 도는 중!");
+        //Debug.Log($"{idx} + 코루틴 도는 중!");
         isFlipped = true; // 뒤집이서
         //front.SetActive(true); // 앞면이 나타나고
         //back.SetActive(false); // 뒷면이 사라지면
@@ -101,7 +101,7 @@ public class Card : MonoBehaviour
     }
 
     private void CloseCardInvoke()
-    {
+    {        
         anim.SetBool("IsOpen", false);
         //front.SetActive(false);
         //back.SetActive(true);
