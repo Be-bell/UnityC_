@@ -52,6 +52,7 @@ public class Card : MonoBehaviour
         {
             GameManager.Instance.secondCard = this;
             GameManager.Instance.Matched();
+            StopCoroutine(FlipCard()); // 카드가 닫히면 코루틴 멈추기
 
             // if Matching finished, matchCount++;
             GameManager.Instance.matchCount++;
@@ -84,6 +85,7 @@ public class Card : MonoBehaviour
     {
         Invoke("CloseCardInvoke", 1.0f);
         backImg.color = new Color(139.0f / 255.0f, 139.0f / 255.0f, 139.0f / 255.0f, 255.0f / 255.0f); // 회색
+
     }
 
     private void CloseCardInvoke()

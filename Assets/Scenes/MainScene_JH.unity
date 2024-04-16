@@ -877,11 +877,12 @@ MonoBehaviour:
   secondCard: {fileID: 0}
   timeText: {fileID: 451012532}
   endText: {fileID: 11038340}
-  matchTxt: {fileID: 0}
+  matchTxt: {fileID: 1490257959}
   cardCount: 0
   stateNum: 0
   matchCount: 0
   audioClip: {fileID: 8300000, guid: 55563902e92caaf4895eaf31ce650315, type: 3}
+  failTxt: {fileID: 0}
 --- !u!4 &1252851987
 Transform:
   m_ObjectHideFlags: 0
