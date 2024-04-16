@@ -29,9 +29,11 @@ public class DataManager : MonoBehaviour
     /// </summary>
     public void LoadGameData()
     {
-        string filePath = Application.persistentDataPath + "/" + gameDataFileName;
+        //string filePath = Application.persistentDataPath + "/" + gameDataFileName;
 
-        if(File.Exists(filePath))
+        string filePath = Path.Combine(Application.dataPath, gameDataFileName);
+
+        if (File.Exists(filePath))
         {
             string fromJsonData = File.ReadAllText(filePath);
             gameData = JsonUtility.FromJson<GameData>(fromJsonData);
@@ -46,7 +48,8 @@ public class DataManager : MonoBehaviour
     public void SaveGameData() 
     {   
         string toJsonData = JsonUtility.ToJson(gameData, true); // Data -> Json 형식으로 변경  JsonUtility.ToJson("Json으로 변경할 데이터", 가독성 여부)
-        string filePath = Application.persistentDataPath + "/" + gameDataFileName;
+        //string filePath = Application.persistentDataPath + "/" + gameDataFileName; // File Path Location
+        string filePath = Path.Combine(Application.dataPath, gameDataFileName);
 
         File.WriteAllText(filePath, toJsonData); // 이미 저장된 파일이 있는 경우 덮어쓰기
 

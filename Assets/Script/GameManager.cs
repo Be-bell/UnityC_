@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
 
     private float time = 60.0f; // 제한 시간을 60초로 설정한다. [실패할때마다 시간 감소]
     private float maxTime = 0.0f;
-    private float currentTime = 0.0f;
 
     public int cardCount = 0;
 
@@ -31,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     // count attemped to match card
     public int matchCount = 0;
+    private float currentCount = 0.0f;
 
     public AudioClip audioClip;
     private AudioSource audioSource;
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        DataManager.Instance.LoadGameData();
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
     }
@@ -115,17 +116,18 @@ public class GameManager : MonoBehaviour
 
     private void GetCurrentScore()
     {
-        currentTime = time;
+        currentCount = matchCount;
     }
 
     private void OnResultPanel()
     {
         resultPanel.SetActive(true);
-        resultText.text = currentTime.ToString();
+        resultText.text = currentCount.ToString();
     }
     private void OnApplicationQuit()
     {
-        DataManager.Instance.SaveGameData();
+        Chapter();
+        //DataManager.Instance.SaveGameData();
     }
 
     public void Chapter()
@@ -134,9 +136,9 @@ public class GameManager : MonoBehaviour
 
         DataManager.Instance.gameData.stageLevel = stateNum; 
 
-        if(maxScore < currentTime)
+        if(maxScore < currentCount)
         {
-            maxTime = currentTime;
+            maxTime = currentCount;
         }
 
         DataManager.Instance.gameData.maxScore = maxTime;

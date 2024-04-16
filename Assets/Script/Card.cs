@@ -44,7 +44,6 @@ public class Card : MonoBehaviour
     }
     public void OpenCard()
     {
-        Debug.Log("OpenCard");
         //Rotate();
         audioSource.PlayOneShot(clip);
 
@@ -78,21 +77,24 @@ public class Card : MonoBehaviour
 
     IEnumerator FlipCard()
     {
+        Debug.Log($"{idx} + 코루틴 도는 중!");
         isFlipped = true; // 뒤집이서
         //front.SetActive(true); // 앞면이 나타나고
         //back.SetActive(false); // 뒷면이 사라지면
         Rotate();
-        yield return new WaitForSeconds(5.0f); // 5초동안 대기하고
+        yield return new WaitForSeconds(2.0f); // 5초동안 대기하고
 
         //front.SetActive(false); // 앞면이 사라지고
         //back.SetActive(true); // 뒷면이 나타나면서
-        
+        GameManager.Instance.firstCard = null;
+        Rotate();
         isFlipped = false; // 뒤집기 전으로 회귀
-
+        Debug.Log($"{idx} + 코루틴 끝!");
     }
 
     public void CloseCard()
     {
+        StopCoroutine(FlipCard()); // 카드가 닫히면 코루틴 멈추기
         Invoke("CloseCardInvoke", 1.0f);
         backImg.color = new Color(139.0f / 255.0f, 139.0f / 255.0f, 139.0f / 255.0f, 255.0f / 255.0f); // 회색
 
@@ -100,7 +102,6 @@ public class Card : MonoBehaviour
 
     private void CloseCardInvoke()
     {
-        Rotate();
         anim.SetBool("IsOpen", false);
         //front.SetActive(false);
         //back.SetActive(true);

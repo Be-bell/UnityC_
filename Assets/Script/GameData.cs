@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-[SerializeField] 
+[Serializable] 
 public class GameData
 {
     public int stageLevel;
