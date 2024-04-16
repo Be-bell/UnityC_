@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
-   public void GameStart()
+    public void GameStart()
     {
         SceneManager.LoadScene("MainScene");
     }
@@ -14,4 +14,5 @@ public class StartButton : MonoBehaviour
         SceneManager.LoadScene("MainScene");
         Board.stage = 1;
     }
+
 }

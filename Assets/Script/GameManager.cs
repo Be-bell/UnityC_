@@ -12,15 +12,12 @@ public class GameManager : MonoBehaviour
     public Card secondCard;
 
     public Text timeText;
-    public Text maxText;
     public GameObject endText;
 
     // matchTxt caching
     public Text matchTxt;
 
     private float time = 60.0f; // 제한 시간을 60초로 설정한다. [실패할때마다 시간 감소]
-    private float maxTime = 0.0f;
-
     public int cardCount = 0;
 
     public int stateNum = 0;
@@ -31,6 +28,8 @@ public class GameManager : MonoBehaviour
     public AudioClip audioClip;
     private AudioSource audioSource;
 
+    public GameObject failTxt;
+
     private void Awake()
     {
         if (Instance == null)
@@ -38,14 +37,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        DataManager.Instance.LoadGameData();
-
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
-        
-
-
-        maxText.text = maxTime.ToString();
     }
     private void Update()
     {
@@ -91,6 +84,7 @@ public class GameManager : MonoBehaviour
         {
             firstCard.CloseCard();
             secondCard.CloseCard();
+            failTxt.SetActive(true);
             time -= 2.0f;//카드 매칭이 틀렸을 시 제한시간 2초 차감한다 [실패할때마다 시간 감소]
         }
         firstCard = null;
@@ -101,24 +95,8 @@ public class GameManager : MonoBehaviour
     {
         stateNum++;
     }
-
-
-
-    /// <summary>
-    /// Game Quit - Save Data
-    /// </summary>
-    private void OnApplicationQuit()
+    public void ButtonContenue()
     {
-        DataManager.Instance.SaveGameData();
-    }
-
-    public void Chapter()
-    {
-        //Add Stage Information
-        //DataManager.Instance.gameData.stageLevel =  
-
-        
-        DataManager.Instance.gameData.maxScore = maxTime;
-        DataManager.Instance.SaveGameData();
+        failTxt.SetActive(false);
     }
 }
