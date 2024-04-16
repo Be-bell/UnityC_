@@ -6,6 +6,7 @@ using System.Linq;
 public class Board : MonoBehaviour
 {
     public GameObject card;
+    public static int stage = 0;
 
     private void Start()
     {
