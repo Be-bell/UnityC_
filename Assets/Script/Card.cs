@@ -36,7 +36,6 @@ public class Card : MonoBehaviour
     }
     public void OpenCard()
     {
-        Debug.Log(idx);
         audioSource.PlayOneShot(clip);
 
         anim.SetBool("IsOpen", true);
