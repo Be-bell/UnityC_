@@ -49,6 +49,8 @@ public class Card : MonoBehaviour
         if (GameManager.Instance.firstCard == null)
         {
             GameManager.Instance.firstCard = this;
+
+
         }
         else
         {

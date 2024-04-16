@@ -5,22 +5,22 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    public static DataManager instance;
+    public static DataManager Instance;
 
     private string gameDataFileName = "GameData.json";
     private GameData gameData;
 
     private void Awake()
     {
-        if(instance == null)
+        if(Instance == null)
         {
-            instance = this;
+            Instance = this;
+        }
+        else if(Instance != this)
+        { 
             DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-
-        }
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>

@@ -12,9 +12,12 @@ public class GameManager : MonoBehaviour
     public Card secondCard;
 
     public Text timeText;
+    public Text maxText;
     public GameObject endText;
 
     private float time = 60.0f; // 제한 시간을 60초로 설정한다. [실패할때마다 시간 감소]
+    private float maxTime = 0.0f;
+
     public int cardCount = 0;
 
     public int stateNum = 0;
@@ -29,8 +32,14 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        DataManager.Instance.LoadGameData();
+
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
+        
+
+
+        maxText.text = maxTime.ToString();
     }
     private void Update()
     {
@@ -82,5 +91,13 @@ public class GameManager : MonoBehaviour
     public void AddStateNum()
     {
         stateNum++;
+    }
+
+    /// <summary>
+    /// Game Quit - Save Data
+    /// </summary>
+    private void OnApplicationQuit()
+    {
+        DataManager.Instance.SaveGameData();
     }
 }

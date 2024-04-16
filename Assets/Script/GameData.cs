@@ -5,6 +5,6 @@ using UnityEngine;
 [SerializeField] 
 public class GameData
 {
-    public string stageLevel;
+    public int stageLevel;
     public float maxScore;
 }
