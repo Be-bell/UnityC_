@@ -11,7 +11,7 @@ public class Card : MonoBehaviour
     public Animator anim;
     public SpriteRenderer frontImg;
 
-    private bool isFlipped = false;
+    private bool isFlipped = false; // 카드가 뒤집혔는지 추적하기
 
     public AudioClip clip;
     public AudioSource audioSource;
@@ -54,25 +54,25 @@ public class Card : MonoBehaviour
         }
 
     }
-        private void OnMouseDown()
+        private void OnMouseDown() // 마우스로 눌렀을 때 (*Collider 필수)
     {
         if (!isFlipped)
         {
-            StartCoroutine(FlipCard());
+            StartCoroutine(FlipCard()); // 안접혀있을 때 코루틴을 시작해서
         }
     }
 
     IEnumerator FlipCard()
     {
-        isFlipped = true;
-        front.SetActive(true);
-        back.SetActive(false);
+        isFlipped = true; // 뒤집이서
+        front.SetActive(true); // 앞면이 나타나고
+        back.SetActive(false); // 뒷면이 사라지면
 
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(5.0f); // 5초동안 대기하고
 
-        front.SetActive(false);
-        back.SetActive(true);
-        isFlipped = false;
+        front.SetActive(false); // 앞면이 사라지고
+        back.SetActive(true); // 뒷면이 나타나면서
+        isFlipped = false; // 뒤집기 전으로 회귀
 
     }
 
