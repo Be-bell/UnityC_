@@ -12,12 +12,19 @@ public class GameManager : MonoBehaviour
     public Card secondCard;
 
     public Text timeText;
-    public GameObject endText;
+    public Text maxText;
+    public Text resultText;
+    //public GameObject endText;
+
+    public GameObject resultPanel;
 
     // matchTxt caching
     public Text matchTxt;
 
     private float time = 60.0f; // 제한 시간을 60초로 설정한다. [실패할때마다 시간 감소]
+    private float maxTime = 0.0f;
+    private float currentTime = 0.0f;
+
     public int cardCount = 0;
 
     public int stateNum = 0;
@@ -34,6 +41,8 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+
+        //resultPanel.SetActive(false);
     }
     private void Start()
     {
@@ -56,7 +65,9 @@ public class GameManager : MonoBehaviour
             {
                 time = 0.0f; //제한시간을 0초로 고정 [실패할때마다 시간 감소]
 
-                endText.SetActive(true);
+                //endText.SetActive(true);
+                GetCurrentScore();
+                OnResultPanel();
                 Time.timeScale = 0.0f;
             }
         }
@@ -77,7 +88,9 @@ public class GameManager : MonoBehaviour
             if(cardCount == 0)
             {
                 Time.timeScale = 0.0f;
-                endText.SetActive(true);
+                GetCurrentScore();
+                OnResultPanel();
+                //endText.SetActive(true);
             }
         }
         else
@@ -98,5 +111,35 @@ public class GameManager : MonoBehaviour
     public void ButtonContenue()
     {
         failTxt.SetActive(false);
+    }
+
+    private void GetCurrentScore()
+    {
+        currentTime = time;
+    }
+
+    private void OnResultPanel()
+    {
+        resultPanel.SetActive(true);
+        resultText.text = currentTime.ToString();
+    }
+    private void OnApplicationQuit()
+    {
+        DataManager.Instance.SaveGameData();
+    }
+
+    public void Chapter()
+    {
+        var maxScore = DataManager.Instance.gameData.maxScore;
+
+        DataManager.Instance.gameData.stageLevel = stateNum; 
+
+        if(maxScore < currentTime)
+        {
+            maxTime = currentTime;
+        }
+
+        DataManager.Instance.gameData.maxScore = maxTime;
+        DataManager.Instance.SaveGameData();
     }
 }
