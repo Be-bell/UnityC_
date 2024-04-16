@@ -12,18 +12,25 @@ public class GameManager : MonoBehaviour
     public Card secondCard;
 
     public Text timeText;
-    public GameObject endText;
+    public Text maxText;
+    public Text resultText;
+    //public GameObject endText;
+
+    public GameObject resultPanel;
 
     // matchTxt caching
     public Text matchTxt;
 
     private float time = 60.0f; // 제한 시간을 60초로 설정한다. [실패할때마다 시간 감소]
+    private float maxTime = 0.0f;
+
     public int cardCount = 0;
 
     public int stateNum = 0;
 
     // count attemped to match card
     public int matchCount = 0;
+    private float currentCount = 0.0f;
 
     public AudioClip audioClip;
     private AudioSource audioSource;
@@ -34,9 +41,12 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+
+        //resultPanel.SetActive(false);
     }
     private void Start()
     {
+        DataManager.Instance.LoadGameData();
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
     }
@@ -56,7 +66,9 @@ public class GameManager : MonoBehaviour
             {
                 time = 0.0f; //제한시간을 0초로 고정 [실패할때마다 시간 감소]
 
-                endText.SetActive(true);
+                //endText.SetActive(true);
+                GetCurrentScore();
+                OnResultPanel();
                 Time.timeScale = 0.0f;
             }
         }
@@ -65,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
-        if(firstCard.idx == secondCard.idx)
+        if(firstCard.idx == secondCard.idx +8 || firstCard.idx +8 == secondCard.idx)
         {
             
             audioSource.PlayOneShot(audioClip);
@@ -77,7 +89,9 @@ public class GameManager : MonoBehaviour
             if(cardCount == 0)
             {
                 Time.timeScale = 0.0f;
-                endText.SetActive(true);
+                GetCurrentScore();
+                OnResultPanel();
+                //endText.SetActive(true);
             }
         }
         else
@@ -98,5 +112,36 @@ public class GameManager : MonoBehaviour
     public void ButtonContenue()
     {
         failTxt.SetActive(false);
+    }
+
+    private void GetCurrentScore()
+    {
+        currentCount = matchCount;
+    }
+
+    private void OnResultPanel()
+    {
+        resultPanel.SetActive(true);
+        resultText.text = currentCount.ToString();
+    }
+    private void OnApplicationQuit()
+    {
+        Chapter();
+        //DataManager.Instance.SaveGameData();
+    }
+
+    public void Chapter()
+    {
+        var maxScore = DataManager.Instance.gameData.maxScore;
+
+        DataManager.Instance.gameData.stageLevel = stateNum; 
+
+        if(maxScore < currentCount)
+        {
+            maxTime = currentCount;
+        }
+
+        DataManager.Instance.gameData.maxScore = maxTime;
+        DataManager.Instance.SaveGameData();
     }
 }
