@@ -8,6 +8,7 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance;
 
     private string gameDataFileName = "GameData.json";
+    [SerializeField]
     private GameData gameData;
 
     private void Awake()

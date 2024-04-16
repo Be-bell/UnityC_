@@ -93,6 +93,8 @@ public class GameManager : MonoBehaviour
         stateNum++;
     }
 
+
+
     /// <summary>
     /// Game Quit - Save Data
     /// </summary>
