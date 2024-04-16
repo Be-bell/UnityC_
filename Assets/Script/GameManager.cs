@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,13 +14,21 @@ public class GameManager : MonoBehaviour
     public Text timeText;
     public GameObject endText;
 
-    private float time = 0.0f;
+    // matchTxt caching
+    public Text matchTxt;
+
+    private float time = 60.0f; // 제한 시간을 60초로 설정한다. [실패할때마다 시간 감소]
     public int cardCount = 0;
 
     public int stateNum = 0;
 
+    // count attemped to match card
+    public int matchCount = 0;
+
     public AudioClip audioClip;
     private AudioSource audioSource;
+
+    public GameObject failTxt;
 
     private void Awake()
     {
@@ -33,16 +42,25 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        time += Time.deltaTime;
+        time -= Time.deltaTime; //제한시간이 점점 감소한다 [실패할때마다 시간 감소]
         timeText.text = time.ToString("N2");
 
-        if(time >= 30.0f)
+        // matchCount put in matchTxt
+        matchTxt.text = matchCount.ToString();
+        
+        if (time <= 10.0f) //제한시간이 10초 남았을 시 [타이머 시간 경고 기능]
         {
-            time = 30.0f;
+            timeText.color = new Color32(255, 0, 0, 255); // 제한 시간을 빨간색으로 강조 [타이머 시간 경고 기능]
 
-            endText.SetActive(true);
-            Time.timeScale = 0.0f;
+            if (time <= 0.0f) //제한시간이 0초가 되었을 시 [실패할때마다 시간 감소]
+            {
+                time = 0.0f; //제한시간을 0초로 고정 [실패할때마다 시간 감소]
+
+                endText.SetActive(true);
+                Time.timeScale = 0.0f;
+            }
         }
+        
     }
 
     public void Matched()
@@ -66,6 +84,8 @@ public class GameManager : MonoBehaviour
         {
             firstCard.CloseCard();
             secondCard.CloseCard();
+            failTxt.SetActive(true);
+            time -= 2.0f;//카드 매칭이 틀렸을 시 제한시간 2초 차감한다 [실패할때마다 시간 감소]
         }
         firstCard = null;
         secondCard = null;
@@ -74,5 +94,9 @@ public class GameManager : MonoBehaviour
     public void AddStateNum()
     {
         stateNum++;
+    }
+    public void ButtonContenue()
+    {
+        failTxt.SetActive(false);
     }
 }

@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
     public GameObject back;
     public Animator anim;
     public SpriteRenderer frontImg;
+    public SpriteRenderer backImg;      // spriterenderer 접근을 위해 선언
 
     private bool isFlipped = false; // 카드가 뒤집혔는지 추적하기
 
@@ -19,7 +20,7 @@ public class Card : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
+        backImg = back.GetComponent<SpriteRenderer>();      // back에 있는 컴포넌트만 선언
     }
     public void Setting(int number)
     {
@@ -51,6 +52,9 @@ public class Card : MonoBehaviour
         {
             GameManager.Instance.secondCard = this;
             GameManager.Instance.Matched();
+
+            // if Matching finished, matchCount++;
+            GameManager.Instance.matchCount++;
         }
 
     }
@@ -78,7 +82,8 @@ public class Card : MonoBehaviour
 
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 1.0f);     
+        Invoke("CloseCardInvoke", 1.0f);
+        backImg.color = new Color(139.0f / 255.0f, 139.0f / 255.0f, 139.0f / 255.0f, 255.0f / 255.0f); // 회색
     }
 
     private void CloseCardInvoke()
