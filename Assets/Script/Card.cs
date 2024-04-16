@@ -11,6 +11,8 @@ public class Card : MonoBehaviour
     public Animator anim;
     public SpriteRenderer frontImg;
 
+    private bool isFlipped = false;
+
     public AudioClip clip;
     public AudioSource audioSource;
 
@@ -35,14 +37,13 @@ public class Card : MonoBehaviour
     }
     public void OpenCard()
     {
-        Debug.Log(idx);
         audioSource.PlayOneShot(clip);
 
         anim.SetBool("IsOpen", true);
         front.SetActive(true);
         back.SetActive(false);
 
-       if(GameManager.Instance.firstCard == null)
+        if(GameManager.Instance.firstCard == null)
         {
             GameManager.Instance.firstCard = this;
         }
@@ -51,12 +52,33 @@ public class Card : MonoBehaviour
             GameManager.Instance.secondCard = this;
             GameManager.Instance.Matched();
         }
-        
+
+    }
+        private void OnMouseDown()
+    {
+        if (!isFlipped)
+        {
+            StartCoroutine(FlipCard());
+        }
+    }
+
+    IEnumerator FlipCard()
+    {
+        isFlipped = true;
+        front.SetActive(true);
+        back.SetActive(false);
+
+        yield return new WaitForSeconds(5.0f);
+
+        front.SetActive(false);
+        back.SetActive(true);
+        isFlipped = false;
+
     }
 
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 1.0f);
+        Invoke("CloseCardInvoke", 1.0f);     
     }
 
     private void CloseCardInvoke()
@@ -64,5 +86,5 @@ public class Card : MonoBehaviour
         anim.SetBool("IsOpen", false);
         front.SetActive(false);
         back.SetActive(true);
-    }
+    }        
 }
