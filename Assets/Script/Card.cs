@@ -12,7 +12,7 @@ public class Card : MonoBehaviour
     public SpriteRenderer back;
     public Animator anim;
 
-    public Ease ease;
+    public Ease ease = Ease.Linear;
 
     public AudioClip clip;
     public AudioSource audioSource;

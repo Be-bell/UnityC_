@@ -111,4 +111,14 @@ public class GameManager : MonoBehaviour
     {
         DataManager.Instance.SaveGameData();
     }
+
+    public void Chapter()
+    {
+        //Add Stage Information
+        //DataManager.Instance.gameData.stageLevel =  
+
+        
+        DataManager.Instance.gameData.maxScore = maxTime;
+        DataManager.Instance.SaveGameData();
+    }
 }
