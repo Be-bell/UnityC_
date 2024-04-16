@@ -9,9 +9,4 @@ public class StartButton : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
-    public void GameStart_Hard()
-    {
-        SceneManager.LoadScene("MainScene");
-        Board.stage = 1;
-    }
 }
