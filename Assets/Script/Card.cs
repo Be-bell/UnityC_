@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Card : MonoBehaviour
 {
     public int idx = 0;
-
+    
     public SpriteRenderer front;
     public SpriteRenderer back;
     public Animator anim;
@@ -70,6 +70,9 @@ public class Card : MonoBehaviour
     {
         if (!isFlipped)
         {
+            if (GameManager.Instance.secondCard != null)
+                return;
+
             OpenCard();
             StartCoroutine(FlipCard()); // 안접혀있을 때 코루틴을 시작해서
         }
@@ -84,12 +87,17 @@ public class Card : MonoBehaviour
         Rotate();
         yield return new WaitForSeconds(2.0f); // 5초동안 대기하고
 
+
         //front.SetActive(false); // 앞면이 사라지고
         //back.SetActive(true); // 뒷면이 나타나면서
         GameManager.Instance.firstCard = null;
         Rotate();
         isFlipped = false; // 뒤집기 전으로 회귀
         Debug.Log($"{idx} + 코루틴 끝!");
+
+
+            //GameManager.Instance.firstCard = null;
+            //GameManager.Instance.secondCard = null;
     }
 
     public void CloseCard()
@@ -103,6 +111,10 @@ public class Card : MonoBehaviour
     private void CloseCardInvoke()
     {        
         anim.SetBool("IsOpen", false);
+
+
+
+        
         //front.SetActive(false);
         //back.SetActive(true);
     }
@@ -116,6 +128,14 @@ public class Card : MonoBehaviour
             frontImg.flipX = (this.transform.eulerAngles.y < 180) ? true : false;
         });
         seq.Append(this.transform.DORotate(this.transform.eulerAngles + new Vector3(0, 180, 0), 0.25f)).SetEase(ease);
+        seq.AppendCallback(() =>
+        {
+            if (GameManager.Instance.secondCard == this && !frontImg.flipX)
+            {
+                GameManager.Instance.firstCard = null;
+                GameManager.Instance.secondCard = null;
+            }
+        });
     }
 
 }
