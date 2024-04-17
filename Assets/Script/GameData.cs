@@ -8,4 +8,5 @@ public class GameData
 {
     public int stageLevel;
     public float maxScore;
+    public bool HardOn = false;
 }
