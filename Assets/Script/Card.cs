@@ -70,6 +70,9 @@ public class Card : MonoBehaviour
     {
         if (!isFlipped)
         {
+            if (GameManager.Instance.secondCard != null)
+                return;
+
             OpenCard();
             StartCoroutine(FlipCard()); // 안접혀있을 때 코루틴을 시작해서
         }
@@ -84,12 +87,17 @@ public class Card : MonoBehaviour
         Rotate();
         yield return new WaitForSeconds(2.0f); // 5초동안 대기하고
 
+
         //front.SetActive(false); // 앞면이 사라지고
         //back.SetActive(true); // 뒷면이 나타나면서
-        GameManager.Instance.firstCard = null;
+        //GameManager.Instance.firstCard = null;
         Rotate();
         isFlipped = false; // 뒤집기 전으로 회귀
         Debug.Log($"{idx} + 코루틴 끝!");
+
+        GameManager.Instance.firstCard = null;
+        GameManager.Instance.secondCard = null;
+        yield return new WaitForSeconds(2.0f); 
     }
 
     public void CloseCard()
