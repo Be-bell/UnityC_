@@ -26,7 +26,7 @@ public class Card : MonoBehaviour
         frontImg = GetComponent<SpriteRenderer>();
         frontImg.sprite = back.sprite;
         audioSource = GetComponent<AudioSource>();
-        backImg = back.GetComponent<SpriteRenderer>();      // back에 있는 컴포넌트만 선언
+        backImg = GetComponent<SpriteRenderer>();      // back에 있는 컴포넌트만 선언
     }
     public void Setting(int number)
     {

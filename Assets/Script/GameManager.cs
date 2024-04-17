@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     private float time = 60.0f; // 제한 시간을 60초로 설정한다. [실패할때마다 시간 감소]
     private float maxTime = 0.0f;
+    private float executeTime = 0.0f;
+    private float waitingTime = 0.03f;
 
     public int cardCount = 0;
 
@@ -35,7 +37,7 @@ public class GameManager : MonoBehaviour
     public AudioClip audioClip;
     private AudioSource audioSource;
 
-    public GameObject failTxt;
+    public Text nameTxt;
 
     private void Awake()
     {
@@ -61,7 +63,26 @@ public class GameManager : MonoBehaviour
         if (time <= 10.0f) //제한시간이 10초 남았을 시 [타이머 시간 경고 기능]
         {
             timeText.color = new Color32(255, 0, 0, 255); // 제한 시간을 빨간색으로 강조 [타이머 시간 경고 기능]
+            bool check = (int)time % 2 == 1;//if문을 반복하기 위한 bool값 형성 [제한 시간 경고] 
 
+            if (check == true) //bool값이 true일때 아래 if문을 실행 [제한 시간 경고]
+            {
+                executeTime += Time.deltaTime; //실행 시간에 시간을 누적 [제한 시간 경고]
+                if (executeTime >= waitingTime) //실행 시간이 지연 시간 값을 넘을 경우 아래 if문을 실행 [제한 시간 경고]
+                {
+                    timeText.fontSize += 1; // 폰트 사이즈를 +1 만큼 올린다. [제한 시간 경고]
+                    executeTime = 0; //실행 시간 값을 초기화 [제한 시간 경고]
+                }
+            }
+            else if (check == false) //bool값이 false일때 아래 if문을 실행 [제한 시간 경고]
+            {
+                executeTime += Time.deltaTime; //실행 시간에 시간을 누적 [제한 시간 경고]
+                if (executeTime >= waitingTime) //실행 시간이 지연 시간 값을 넘을 경우 아래 if문을 실행 [제한 시간 경고]
+                {
+                    timeText.fontSize -= 1; // 폰트 사이즈를 -1 만큼 내린다. [제한 시간 경고]
+                    executeTime = 0; //실행 시간 값을 초기화 [제한 시간 경고]
+                }
+            }
             if (time <= 0.0f) //제한시간이 0초가 되었을 시 [실패할때마다 시간 감소]
             {
                 time = 0.0f; //제한시간을 0초로 고정 [실패할때마다 시간 감소]
@@ -86,7 +107,52 @@ public class GameManager : MonoBehaviour
             secondCard.DestoryCard();
             cardCount -= 2;
 
-            if(cardCount == 0)
+            switch (firstCard.idx)
+            {
+                case 0:
+                case 8:
+                    nameTxt.text = "김종화";
+                    nameTxt.color = Color.black;
+                    break;
+                case 1:
+                case 9:
+                    nameTxt.text = "김진영";
+                    nameTxt.color = Color.black;
+                    break;
+                case 2:
+                case 10:
+                    nameTxt.text = "김경찬";
+                    nameTxt.color = Color.black;
+                    break;
+                case 3:
+                case 11:
+                    nameTxt.text = "최윤화";
+                    nameTxt.color = Color.black;
+                    break;
+                case 4:
+                case 12:
+                    nameTxt.text = "곽상원";
+                    nameTxt.color = Color.black;
+                    break;
+                case 5:
+                case 13:
+                    nameTxt.text = "서범진";
+                    nameTxt.color = Color.black;
+                    break;
+                case 6:
+                case 14:
+                    nameTxt.text = "지우";
+                    nameTxt.color = Color.black;
+                    break;
+                case 7:
+                case 15:
+                    nameTxt.text = "웅";
+                    nameTxt.color = Color.black;
+                    break;
+            }
+
+
+            if (cardCount == 0)
             {
                 Time.timeScale = 0.0f;
                 GetCurrentScore();
@@ -99,7 +165,8 @@ public class GameManager : MonoBehaviour
         {
             firstCard.CloseCard();
             secondCard.CloseCard();
-            failTxt.SetActive(true);
+            nameTxt.text = "실패";
+            nameTxt.color = Color.red;
             time -= 2.0f;//카드 매칭이 틀렸을 시 제한시간 2초 차감한다 [실패할때마다 시간 감소]
         }
         firstCard = null;
@@ -110,11 +177,6 @@ public class GameManager : MonoBehaviour
     {
         stateNum++;
     }
-    public void ButtonContenue()
-    {
-        failTxt.SetActive(false);
-    }
-
     private void GetCurrentScore()
     {
         currentCount = matchCount;
