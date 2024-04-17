@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
+        int num;
         if(firstCard.idx == secondCard.idx +8 || firstCard.idx +8 == secondCard.idx)
         {
             
@@ -107,45 +108,45 @@ public class GameManager : MonoBehaviour
             secondCard.DestoryCard();
             cardCount -= 2;
 
-            switch (firstCard.idx)
+            if(firstCard.idx < secondCard.idx)
+            {
+                num = firstCard.idx;
+            }
+            else
+            {
+                num = secondCard.idx;
+            }
+            switch (num)
             {
                 case 0:
-                case 8:
                     nameTxt.text = "±èÁ¾È­";
                     nameTxt.color = Color.black;
                     break;
                 case 1:
-                case 9:
                     nameTxt.text = "±èÁø¿µ";
                     nameTxt.color = Color.black;
                     break;
                 case 2:
-                case 10:
                     nameTxt.text = "±è°æÂù";
                     nameTxt.color = Color.black;
                     break;
                 case 3:
-                case 11:
                     nameTxt.text = "ÃÖÀ±È­";
                     nameTxt.color = Color.black;
                     break;
                 case 4:
-                case 12:
                     nameTxt.text = "°û»ó¿ø";
                     nameTxt.color = Color.black;
                     break;
                 case 5:
-                case 13:
                     nameTxt.text = "¼­¹üÁø";
                     nameTxt.color = Color.black;
                     break;
                 case 6:
-                case 14:
                     nameTxt.text = "Áö¿ì";
                     nameTxt.color = Color.black;
                     break;
                 case 7:
-                case 15:
                     nameTxt.text = "¿õ";
                     nameTxt.color = Color.black;
                     break;
