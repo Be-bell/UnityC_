@@ -86,7 +86,7 @@ public class Card : MonoBehaviour
 
         //front.SetActive(false); // 앞면이 사라지고
         //back.SetActive(true); // 뒷면이 나타나면서
-        GameManager.Instance.firstCard = null;
+        //GameManager.Instance.firstCard = null;
         Rotate();
         isFlipped = false; // 뒤집기 전으로 회귀
         Debug.Log($"{idx} + 코루틴 끝!");
