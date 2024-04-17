@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0.0f;
                 GetCurrentScore();
                 OnResultPanel();
+                Chapter();
                 //endText.SetActive(true);
             }
         }
@@ -126,7 +127,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnApplicationQuit()
     {
-        Chapter();
+        //Chapter();
         //DataManager.Instance.SaveGameData();
     }
 
@@ -140,6 +141,10 @@ public class GameManager : MonoBehaviour
         {
             maxTime = currentCount;
         }
+
+        if(time >0)
+            DataManager.Instance.gameData.HardOn = true;
+        
 
         DataManager.Instance.gameData.maxScore = maxTime;
         DataManager.Instance.SaveGameData();
