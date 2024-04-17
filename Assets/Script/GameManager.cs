@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public AudioClip audioClip;
     private AudioSource audioSource;
 
-    public GameObject failTxt;
+    public Text nameTxt;
 
     private void Awake()
     {
@@ -86,7 +86,52 @@ public class GameManager : MonoBehaviour
             secondCard.DestoryCard();
             cardCount -= 2;
 
-            if(cardCount == 0)
+            switch (firstCard.idx)
+            {
+                case 0:
+                case 8:
+                    nameTxt.text = "김종화";
+                    nameTxt.color = Color.black;
+                    break;
+                case 1:
+                case 9:
+                    nameTxt.text = "김진영";
+                    nameTxt.color = Color.black;
+                    break;
+                case 2:
+                case 10:
+                    nameTxt.text = "김경찬";
+                    nameTxt.color = Color.black;
+                    break;
+                case 3:
+                case 11:
+                    nameTxt.text = "최윤화";
+                    nameTxt.color = Color.black;
+                    break;
+                case 4:
+                case 12:
+                    nameTxt.text = "곽상원";
+                    nameTxt.color = Color.black;
+                    break;
+                case 5:
+                case 13:
+                    nameTxt.text = "서범진";
+                    nameTxt.color = Color.black;
+                    break;
+                case 6:
+                case 14:
+                    nameTxt.text = "지우";
+                    nameTxt.color = Color.black;
+                    break;
+                case 7:
+                case 15:
+                    nameTxt.text = "웅";
+                    nameTxt.color = Color.black;
+                    break;
+            }
+
+
+            if (cardCount == 0)
             {
                 Time.timeScale = 0.0f;
                 GetCurrentScore();
@@ -99,7 +144,8 @@ public class GameManager : MonoBehaviour
         {
             firstCard.CloseCard();
             secondCard.CloseCard();
-            failTxt.SetActive(true);
+            nameTxt.text = "실패";
+            nameTxt.color = Color.red;
             time -= 2.0f;//카드 매칭이 틀렸을 시 제한시간 2초 차감한다 [실패할때마다 시간 감소]
         }
         firstCard = null;
@@ -110,11 +156,6 @@ public class GameManager : MonoBehaviour
     {
         stateNum++;
     }
-    public void ButtonContenue()
-    {
-        failTxt.SetActive(false);
-    }
-
     private void GetCurrentScore()
     {
         currentCount = matchCount;
