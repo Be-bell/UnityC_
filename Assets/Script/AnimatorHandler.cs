@@ -17,18 +17,21 @@ public class AnimatorHandler : MonoBehaviour
     void Awake()
     {
         m_Animator = GetComponent<Animator>();
+        this.gameObject.SetActive(true);
     }
 
     public void EnterNextScene()
     {
-        m_Animator.Play("dddj");
+        m_Animator.Play("dddj");
     }
 
     public void OnEnterNextScene()
     {
         // 애니메이션이 끝난 후 처리
-        Debug.Log("두두둥장!");
-    }
+        this.gameObject.SetActive(false);
+
+        GameManager.Instance.BoardState(true);
+    }
 
     #endregion Methods
 

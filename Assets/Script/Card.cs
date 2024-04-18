@@ -93,7 +93,7 @@ public class Card : MonoBehaviour
         //GameManager.Instance.firstCard = null;
         Rotate();
         isFlipped = false; // 뒤집기 전으로 회귀
-        Debug.Log($"{idx} + 코루틴 끝!");
+        //Debug.Log($"{idx} + 코루틴 끝!");
 
 
             //GameManager.Instance.firstCard = null;

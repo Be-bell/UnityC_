@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     public int stateNum = 0;
 
+    public GameObject board;
+
     // count attemped to match card
     public int matchCount = 0;
     private float currentCount = 0.0f;
@@ -44,14 +47,25 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
             Instance = this;
 
+        BoardState(false);
         //resultPanel.SetActive(false);
     }
     private void Start()
     {
         DataManager.Instance.LoadGameData();
-        Time.timeScale = 1.0f;
+        //Time.timeScale = 1.0f;
+        maxText.text = DataManager.Instance.gameData.maxScore.ToString();
         audioSource = GetComponent<AudioSource>();
     }
+
+    public void BoardState(bool state)
+    {
+        board.SetActive(state);
+
+        Time.timeScale = state ? 1.0f : 0.0f;
+    }
+
+
     private void Update()
     {
         time -= Time.deltaTime; //제한시간이 점점 감소한다 [실패할때마다 시간 감소]
