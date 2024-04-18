@@ -9,4 +9,9 @@ public class RetryButton : MonoBehaviour
         SceneManager.LoadScene("MainScene");
         GameManager.Instance.Chapter();
     }
+
+    public void GameSceneButton()
+    {
+
+    }
 }
