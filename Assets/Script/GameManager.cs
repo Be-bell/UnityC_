@@ -29,7 +29,21 @@ public class GameManager : MonoBehaviour
 
     public int cardCount = 0;
 
-    public int stateNum = 0;
+    private int stageNum = 0;
+
+    public int StageNum
+    {
+        get
+        {
+            return stageNum;
+        }
+        set
+        {
+            stageNum = value;
+        }
+    }
+
+    public static int stageNumber = 0;
 
     public GameObject board;
 
@@ -54,7 +68,16 @@ public class GameManager : MonoBehaviour
     {
         DataManager.Instance.LoadGameData();
         //Time.timeScale = 1.0f;
-        maxText.text = DataManager.Instance.gameData.maxScore.ToString();
+        //maxText.text = DataManager.Instance.gameData.maxScore.ToString();
+        //if (DataManager.Instance.gameData.StageInfor[stateNum] != null)
+        //{
+        //    maxText.text = DataManager.Instance.gameData.StageInfor[stateNum].maxScore.ToString();
+        //}
+        //else
+        //{
+        //    maxText.text = 0.0f.ToString();
+        //}
+
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -64,7 +87,6 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = state ? 1.0f : 0.0f;
     }
-
 
     private void Update()
     {
@@ -190,7 +212,7 @@ public class GameManager : MonoBehaviour
 
     public void AddStateNum()
     {
-        stateNum++;
+        stageNum++;
     }
     private void GetCurrentScore()
     {
@@ -208,22 +230,43 @@ public class GameManager : MonoBehaviour
         //DataManager.Instance.SaveGameData();
     }
 
+    //public void Chapter()
+    //{
+    //    var maxScore = DataManager.Instance.gameData.maxScore;
+
+    //    DataManager.Instance.gameData.stageLevel = stateNum; 
+
+    //    if(maxScore < currentCount)
+    //    {
+    //        maxTime = currentCount;
+    //    }
+
+    //    if(time >0)
+    //        DataManager.Instance.gameData.HardOn = true;
+        
+
+    //    DataManager.Instance.gameData.maxScore = maxTime;
+    //    DataManager.Instance.SaveGameData();
+    //}
+
     public void Chapter()
     {
-        var maxScore = DataManager.Instance.gameData.maxScore;
+        GameData data = DataManager.Instance.gameData.StageInfor[stageNumber];
 
-        DataManager.Instance.gameData.stageLevel = stateNum; 
+        var maxScore = data.maxScore;
 
-        if(maxScore < currentCount)
+        data.stageLevel = stageNum;
+
+        if (maxScore < currentCount)
         {
             maxTime = currentCount;
         }
 
-        if(time >0)
-            DataManager.Instance.gameData.HardOn = true;
-        
+        if (time > 0)
+            data.HardOn = true;
 
-        DataManager.Instance.gameData.maxScore = maxTime;
+        data.maxScore = maxTime;
         DataManager.Instance.SaveGameData();
+
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -9,19 +10,24 @@ public class DataManager : MonoBehaviour
 
     private string gameDataFileName = "GameData.json";
 
-    public GameData gameData;
+    //public GameData gameData;
+    public GameDataInfor gameData;
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
-        }
-        else if(Instance != this)
-        { 
             DontDestroyOnLoad(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void Start()
+    {   
+        LoadGameData();
     }
 
     /// <summary>
@@ -36,8 +42,8 @@ public class DataManager : MonoBehaviour
         if (File.Exists(filePath))
         {
             string fromJsonData = File.ReadAllText(filePath);
-            gameData = JsonUtility.FromJson<GameData>(fromJsonData);
-
+            //gameData = JsonUtility.FromJson<GameData>(fromJsonData);
+            gameData = JsonUtility.FromJson<GameDataInfor>(fromJsonData);
             Debug.Log("Data Load Complete");
         }
     }

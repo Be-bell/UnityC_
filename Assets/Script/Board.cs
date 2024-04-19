@@ -7,10 +7,13 @@ using Unity.VisualScripting;
 public class Board : MonoBehaviour
 {
     public GameObject card;
-    public static int stage = 0;
+    public int stage = 0;
 
     private void Start()
     {
+        //stage = GameManager.Instance.StageNum;
+        stage = GameManager.stageNumber;
+
         int[] Harr = { 0, 1, 2, 3, 4, 5,6,7, 8, 9, 10, 11, 12, 13,14,15 };
         int[] arr = { 0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13 };
 

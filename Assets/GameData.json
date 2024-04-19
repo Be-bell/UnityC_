@@ -1,5 +1,14 @@
 {
-    "stageLevel": 0,
-    "maxScore": 4.0,
-    "HardOn": true
+    "StageInfor": [
+        {
+            "stageLevel": 0,
+            "maxScore": 0.0,
+            "HardOn": true
+        },
+        {
+            "stageLevel": 1,
+            "maxScore": 0.0,
+            "HardOn": false
+        }
+    ]
 }

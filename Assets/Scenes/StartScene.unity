@@ -843,6 +843,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataManager
       objectReference: {fileID: 0}
+    - target: {fileID: 421358418005296939, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: gameData.StageInfor.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 421358418005296939, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
+      propertyPath: gameData.StageInfor.Array.data[1].stageLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2111911775263126256, guid: b2dba28d9873c6c4497ec9ea5974621a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1017,7 +1025,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
